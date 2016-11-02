@@ -1,0 +1,56 @@
+<h3>Administradores</h3>
+
+<a class="waves-effect waves-light btn modal-trigger" href="#modalNewAdmin">Agregar</a>
+<div id="modalNewAdmin" class="modal">
+    <div class="modal-content">
+        <h4>Agregar un nuevo administrador</h4>
+        <form #formulario="ngForm" (ngSubmit)="enviarFormulario(formulario)">
+            <div class="row">
+                <div class="input-field inline">
+                    <input id="last_name" type="text" class="validate" ngModel>
+                    <label for="last_name">Nombre</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field inline">
+                    <input id="email" type="email" class="validate" ngModel>
+                    <label for="email" data-error="wrong" data-success="right">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field inline">
+                    <input id="company" type="text" class="validate" ngModel>
+                    <label for="company">Empresa</label>
+                </div>
+            </div>
+            <button type="submit" class="modal-action modal-close waves-effect waves-green">Enviar</button>
+        </form>
+    </div>
+    
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+        <th data-field="id">Nombre</th>
+        <th data-field="name">Email</th>
+        <th data-field="price">Empresa</th>
+        <th [ngStyle]="{'width': '30%'}"></th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let admin of admins">
+        <tr>
+            <td>{{admin.name}}</td>
+            <td>{{admin.email}}</td>
+            <td>{{admin.company.name}}</td>
+            <td>
+                <a class="btn waves-effect waves-light"><i class="material-icons">mode_edit</i></a>
+                <a class="btn waves-effect waves-light"><i class="material-icons">delete</i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
